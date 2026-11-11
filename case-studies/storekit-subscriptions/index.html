@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="How Sylvan Ash implemented production StoreKit 2 subscription handling across LendPal and LinkNexus.">
+    <meta property="og:title" content="StoreKit 2 subscriptions for two apps — Sylvan Ash">
+    <meta property="og:description" content="Purchases, restoration, entitlement state, refunds, revocations and ongoing transaction updates on iOS.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sylvan-d-ash.github.io/case-studies/storekit-subscriptions/">
+    <link rel="canonical" href="https://sylvan-d-ash.github.io/case-studies/storekit-subscriptions/">
+    <title>StoreKit 2 subscriptions for two apps — Sylvan Ash</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="stylesheet" href="../../assets/styles.css">
+  </head>
+  <body class="case-study-page case-subscriptions">
+    <header class="case-shell">
+      <nav class="case-nav" aria-label="Case study navigation">
+        <a class="wordmark" href="../../" aria-label="Sylvan Ash, home">Sylvan<span>.</span></a>
+        <div class="case-nav-links">
+          <a href="../../#work">Selected work</a>
+          <a href="../../#apps">Apps</a>
+          <a href="mailto:sylvan.d.ash@gmail.com">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="case-hero case-shell">
+        <p class="case-eyebrow">Tinker · StoreKit 2 subscriptions</p>
+        <div class="case-hero-grid">
+          <div>
+            <h1>One subscription lifecycle. Two production apps.</h1>
+            <p class="case-hero-summary">I implemented the iOS StoreKit 2 work for premium feature access in LendPal and LinkNexus, including purchase recovery and changing entitlement states.</p>
+          </div>
+          <aside class="hero-outcome" aria-label="Project outcome">
+            <strong>2</strong>
+            <span>Production applications</span>
+            <small>Full client-side lifecycle</small>
+          </aside>
+        </div>
+      </section>
+
+      <section class="case-facts case-shell" aria-label="Project facts">
+        <div class="case-fact"><span>Products</span><strong>LendPal &amp; LinkNexus</strong></div>
+        <div class="case-fact"><span>Role</span><strong>iOS client implementation</strong></div>
+        <div class="case-fact"><span>Framework</span><strong>StoreKit 2</strong></div>
+        <div class="case-fact"><span>Architecture</span><strong>SwiftUI, SwiftData &amp; MVVM-C</strong></div>
+      </section>
+
+      <div class="case-content case-shell">
+        <section class="case-section">
+          <div class="case-section-label">Challenge</div>
+          <div class="case-prose">
+            <h2>Premium access has more than one happy path.</h2>
+            <p>LendPal and LinkNexus needed production subscription handling for premium features. A purchase is only the beginning: customers restore purchases, transactions update later, and access can change after refunds or revocations.</p>
+            <p>The application needed one dependable view of entitlement status across those customer states.</p>
+          </div>
+        </section>
+
+        <section class="case-section">
+          <div class="case-section-label">My work</div>
+          <div class="case-prose">
+            <h2>The client-side subscription lifecycle.</h2>
+            <p>My scope covered the customer-facing iOS lifecycle, from the initial purchase through ongoing transaction changes.</p>
+            <div class="case-visual" role="img" aria-label="The StoreKit 2 client lifecycle: purchase, verify entitlement, unlock premium access, restore purchases, and monitor refunds and revocations through transaction updates">
+              <p class="visual-caption">StoreKit 2 · Customer and entitlement states</p>
+              <div class="lifecycle-flow">
+                <div class="lifecycle-node"><span>01</span><strong>Purchase product</strong></div>
+                <div class="lifecycle-node"><span>02</span><strong>Resolve entitlement</strong></div>
+                <div class="lifecycle-node"><span>03</span><strong>Unlock premium state</strong></div>
+                <div class="lifecycle-node"><span>04</span><strong>Restore previous purchases</strong></div>
+                <div class="lifecycle-node lifecycle-node--ongoing"><span>Ongoing</span><strong>Observe refunds, revocations and updates</strong></div>
+              </div>
+            </div>
+            <ul>
+              <li>Product purchases and restoration of previous purchases.</li>
+              <li>Entitlement state used by the application to control premium access.</li>
+              <li>Refund and revocation handling.</li>
+              <li>Ongoing changes observed through <code>Transaction.updates</code>.</li>
+              <li>Product and design collaboration around the customer flows.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="case-section">
+          <div class="case-section-label">Scope</div>
+          <div class="case-prose">
+            <h2>Clear boundaries make technical claims useful.</h2>
+            <p>Both applications received production StoreKit 2 handling across their main customer states, including purchase recovery and changes to entitlement status.</p>
+            <div class="scope-note">
+              <strong>Client-side responsibility</strong>
+              <p>My work was on the iOS client. It did not include Stripe, App Store server notifications, server-side signed-transaction verification or reconciliation.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section">
+          <div class="case-section-label">Outcome</div>
+          <div class="case-prose">
+            <h2>Production subscription access across both products.</h2>
+            <p>LendPal and LinkNexus gained consistent client-side subscription behaviour for purchasing, restoring access and responding to later transaction changes.</p>
+            <div class="case-product-links" aria-label="View the applications">
+              <a href="../../lendpal/">Explore LendPal ↗</a>
+              <a href="../../linknexus/">Explore LinkNexus ↗</a>
+            </div>
+            <div class="case-tags" aria-label="Relevant skills">
+              <span>StoreKit 2</span><span>Swift concurrency</span><span>SwiftUI</span><span>SwiftData</span><span>MVVM-C</span><span>Entitlement management</span><span>Product collaboration</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="next-case case-shell">
+        <a href="../polling-feature/">
+          <div><span>Back to the first case study</span><strong>A polling feature that generated $7M</strong></div>
+          <b aria-hidden="true">→</b>
+        </a>
+      </section>
+    </main>
+
+    <footer class="case-footer case-shell">
+      <span>&copy; 2026 Sylvan Ash</span>
+      <a href="mailto:sylvan.d.ash@gmail.com">sylvan.d.ash@gmail.com</a>
+    </footer>
+  </body>
+</html>
